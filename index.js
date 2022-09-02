@@ -13,11 +13,16 @@ input.addEventListener('keypress', function (e) {
 
 function where(event) {
     const clickedElement = event.target;
-    if (clickedElement.id == 'buttonAdd') {
-        if (input.value != ""){
-            createEl(input.value.toLowerCase());
-            input.value = '';
-        };
+    if (clickedElement.id == 'buttonAdd' && input.value != "") {
+        const div = document.createElement('div');
+        const button = document.createElement('button');
+        div.classList.add('item');
+        div.innerText = input.value.toLowerCase();
+        button.id = 'buttonStrike';
+        button.innerText = 'Taie';
+        div.append(button);
+        list.prepend(div);
+        input.value = '';
     } else if (clickedElement.id == 'buttonSU') {
         [...list.children]
         .sort((a,b)=>a.innerText>b.innerText?1:-1)
@@ -36,15 +41,4 @@ function where(event) {
             clickedElement.innerText = 'Taie';
         }
     }
-};
-
-function createEl(text) {
-    const div = document.createElement('div');
-    const button = document.createElement('button');
-    div.classList.add('item');
-    div.innerText = text;
-    button.id = 'buttonStrike';
-    button.innerText = 'Taie';
-    div.append(button);
-    list.prepend(div);
 };
