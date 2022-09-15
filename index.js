@@ -14,15 +14,18 @@ input.addEventListener('keypress', function (e) {
 function where(event) {
     const clickedElement = event.target;
     if (clickedElement.id == 'buttonAdd' && input.value != "") {
-        const div = document.createElement('div');
-        const button = document.createElement('button');
-        div.classList.add('item');
-        div.innerText = input.value.toLowerCase();
-        button.id = 'buttonStrike';
-        button.innerText = 'Taie';
-        div.append(button);
-        list.prepend(div);
-        input.value = '';
+        let array = input.value.split(',');
+        array.forEach(el => {
+            const div = document.createElement('div');
+            const button = document.createElement('button');
+            div.classList.add('item');
+            div.innerText = el.toLowerCase();
+            button.id = 'buttonStrike';
+            button.innerText = 'Taie';
+            div.append(button);
+            list.prepend(div);
+            input.value = '';
+        });
     } else if (clickedElement.id == 'buttonSU') {
         [...list.children]
         .sort((a,b)=>a.innerText>b.innerText?1:-1)
