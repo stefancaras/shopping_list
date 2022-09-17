@@ -1,47 +1,45 @@
-let container = document.querySelector('#container');
-let input = document.querySelector('#input');
-let buttonAdd = document.querySelector('#buttonAdd');
-let list = document.querySelector('#list');
+const container = document.querySelector('#container');
+const input = document.querySelector('#input');
+const buttonAdd = document.querySelector('#buttonAdd');
+const list = document.querySelector('#list');
 
-container.addEventListener('click', where);
-
-input.addEventListener('keypress', function (e) {
+input.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
       buttonAdd.click();
     }
 });
 
-function where(event) {
+container.addEventListener('click', (event) => {
     const clickedElement = event.target;
-    if (clickedElement.id == 'buttonAdd' && input.value != "") {
+    if (clickedElement.id === 'buttonAdd' && input.value != "") {
         let array = input.value.split(',');
         array.forEach(el => {
             const div = document.createElement('div');
             const button = document.createElement('button');
             div.classList.add('item');
-            div.innerText = el.toLowerCase();
-            button.id = 'buttonStrike';
-            button.innerText = 'Taie';
+            div.textContent = el.toLowerCase();
+            button.classList.add('buttonStrike');
+            button.textContent = 'Taie';
             div.append(button);
             list.prepend(div);
             input.value = '';
         });
-    } else if (clickedElement.id == 'buttonSU') {
+    } else if (clickedElement.id === 'buttonSU') {
         [...list.children]
-        .sort((a,b)=>a.innerText>b.innerText?1:-1)
-        .forEach(node=>list.appendChild(node));
-    } else if (clickedElement.id == 'buttonSD') {
+        .sort((a,b) => a.textContent > b.textContent ? 1 : -1)
+        .forEach(node => list.appendChild(node));
+    } else if (clickedElement.id === 'buttonSD') {
         [...list.children]
-        .sort((a,b)=>a.innerText<b.innerText?1:-1)
-        .forEach(node=>list.appendChild(node));
-    } else if (clickedElement.id == 'buttonDelete') {
+        .sort((a,b) => a.textContent < b.textContent ? 1 : -1)
+        .forEach(node => list.appendChild(node));
+    } else if (clickedElement.id === 'buttonDelete') {
         const items = document.querySelectorAll('.item');
         items.forEach(item => {item.remove()});
-    } else if (clickedElement.id == 'buttonStrike') {
+    } else if (clickedElement.classList.contains('buttonStrike')) {
         clickedElement.parentNode.classList.toggle('strike');
-        clickedElement.innerText = '';
+        clickedElement.textContent = '';
         if (!clickedElement.parentNode.classList.contains('strike')) {
-            clickedElement.innerText = 'Taie';
+            clickedElement.textContent = 'Taie';
         }
     }
-};
+});
