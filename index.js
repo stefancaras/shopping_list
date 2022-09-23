@@ -14,21 +14,23 @@ container.addEventListener('click', (event) => {
     if (clickedElement.id === 'buttonAdd' && input.value != "") {
         let array = input.value.split(',');
         array.forEach(el => {
-            const div = document.createElement('div');
-            const button = document.createElement('button');
-            div.classList.add('item');
-            div.textContent = el.toLowerCase();
-            button.classList.add('buttonStrike');
-            button.textContent = 'Taie';
-            div.append(button);
-            list.prepend(div);
-            input.value = '';
+            if (el != "") {
+                const div = document.createElement('div');
+                const button = document.createElement('button');
+                div.classList.add('item');
+                div.textContent = el.trim().toLowerCase();
+                button.classList.add('buttonStrike');
+                button.textContent = 'Taie';
+                div.append(button);
+                list.prepend(div);
+                input.value = '';
+            }
         });
-    } else if (clickedElement.id === 'buttonSU') {
+    } else if (clickedElement.classList.contains('buttonSU')) {
         [...list.children]
         .sort((a,b) => a.textContent > b.textContent ? 1 : -1)
         .forEach(node => list.appendChild(node));
-    } else if (clickedElement.id === 'buttonSD') {
+    } else if (clickedElement.classList.contains('buttonSD')) {
         [...list.children]
         .sort((a,b) => a.textContent < b.textContent ? 1 : -1)
         .forEach(node => list.appendChild(node));

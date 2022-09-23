@@ -1,4 +1,6 @@
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 body {
@@ -20,20 +22,21 @@ h1 {
     margin: 10px auto;
     padding-left: 10px;
 }
-.button {
-    width: 30%;
-    height: 2rem;
-    background-color: rgb(68, 68, 68);
-    color: white;
-    border: none;
-    margin-top: 20px;
-}
+.button,
 .buttonStrike {
     width: 30%;
     height: 2rem;
     background-color: rgb(68, 68, 68);
     color: white;
     border: none;
+}
+.button {
+    margin-top: 20px;
+}
+.button:active {
+    background-color: rgb(26, 26, 26);
+}
+.buttonStrike {
     border-radius: 10px;
 }
 .strike {
@@ -56,6 +59,7 @@ h1 {
 #input {
     width: 61%;
     height: 2rem;
+    padding-left: 5px;
 }
 #list {
     width: 100%;
