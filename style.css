@@ -25,6 +25,7 @@ h1 {
 }
 .strike {
   text-decoration: line-through;
+  color: white;
 }
 .btn,
 .btn-strike {
@@ -48,7 +49,6 @@ h1 {
 }
 .bg-dark {
   background-color: rgb(68, 68, 68);
-  color: white;
 }
 .bg-white {
   background-color: white;
