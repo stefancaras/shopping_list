@@ -6,11 +6,11 @@ const addItems = () => {
     const array = input.value.split(/[,<>]/);
     array.forEach(el => {
         if (el !== "") {
-            list.innerHTML += `
+            list.innerHTML = `
                 <div class="item">
                     <span>${el.trim().toLowerCase()}</span>
                     <button class="btn-strike">Taie</button>
-                </div>`
+                </div>` + list.innerHTML;
             input.value = '';
         }
     });
